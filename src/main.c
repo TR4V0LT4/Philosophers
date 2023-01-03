@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../include/philo.h"
 
 void death_note(t_data *data)
 {
@@ -14,13 +14,14 @@ void death_note(t_data *data)
 			{	
 				printf("Philo[%d] : %5zu ==> %s\n",data->philos[i].id, get_time() - data->start_time ,"  💀 dead 💀 ");
 				data->life = 0;
+				printf("im heeeeeeeeeeeere");
+				exit(1);
 				n = 0;
 		    }
 			pthread_mutex_unlock(&(data->god));
 			i++;
 		}
 	}
-	//usleep(20);
 	return ;
 }
 

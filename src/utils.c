@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../include/philo.h"
 void guide()
 {
 	printf("Put four arguments the fifth is optional :\n");

@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../include/philo.h"
 int fill_data(t_data *data, char **av)
 {
 		int n;

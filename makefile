@@ -1,10 +1,10 @@
 NAME = philo
 
-SRC = main.c utils.c initializations.c routine.c
+SRC = src/main.c src/utils.c src/initializations.c src/routine.c
 
 OBJ = ${SRC:%.c=%.o}
 
-FLAGS =  -Wall -Wextra -Werror -fsanitize=thread 
+FLAGS =  -Wall -Wextra -Werror 
 
 %.o:%.c
 		cc $(FLAGS)  -c $< -o $@
