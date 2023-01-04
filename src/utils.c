@@ -30,18 +30,14 @@ void	ft_usleep(size_t n)
 
 void print_action(t_philo *philo, char *action,size_t t)
 {
-	pthread_mutex_lock(&(philo->data->print));
-		printf("\033[36;1mPhilo[%d] : %5zu ==>\033[0m%s\n",philo->id,t - philo->data->start_time, action);
-	pthread_mutex_unlock(&(philo->data->print));
-}
-
-int destroy_mutexs(t_data *data)
-{
-	while(data->n_philos--)
-	pthread_mutex_destroy(data->forks_mutex);
-	pthread_mutex_destroy(&(data->print));
-	pthread_mutex_destroy(&(data->god));
-	return 0;
+	pthread_mutex_lock(&(philo->data->god));
+	if(philo->data->life)
+	{
+		pthread_mutex_lock(&(philo->data->print));
+			printf("\033[36;1mPhilo[%d] : %5zu ==>\033[0m%s\n",philo->id,t - philo->data->start_time, action);
+		pthread_mutex_unlock(&(philo->data->print));
+	}
+	pthread_mutex_unlock(&(philo->data->god));
 }
 
 int	ft_isdigit(int c)

@@ -7,22 +7,21 @@ void death_note(t_data *data)
 	while(n)
 	{
 		i = 0;
-		while(i < data->n_philos && n )
+		while(i < data->n_philos )
 		{
 			pthread_mutex_lock(&(data->god));
-			if( get_time() > data->philos[i].death_time && !(data->philos[i].eating) ) 
-			{	
+				if( get_time() >= data->philos[i].death_time && !(data->philos[i].eating) ) 
+					data->life = 0;
+				n = data->life;
+			pthread_mutex_unlock(&(data->god));	
+			if(!n)
+			{
 				printf("Philo[%d] : %5zu ==> %s\n",data->philos[i].id, get_time() - data->start_time ,"  💀 dead 💀 ");
-				data->life = 0;
-				printf("im heeeeeeeeeeeere");
-				exit(1);
-				n = 0;
-		    }
-			pthread_mutex_unlock(&(data->god));
+				break;
+			}
 			i++;
 		}
 	}
-	return ;
 }
 
 int main(int ac, char **av)
@@ -31,7 +30,7 @@ int main(int ac, char **av)
 	int i;
 
 	i = -1;
-	if ((ac == 5 || ac == 6) && !fill_data(&data,av))
+	if ((ac == 5 || ac == 6) && !init_data(&data,av))
 	{
 		init_mutexs(&data);
 		data.start_time = get_time();

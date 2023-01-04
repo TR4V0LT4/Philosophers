@@ -14,7 +14,6 @@ typedef struct s_philo
 	int 			l_fork;
 	int 			r_fork;
 	int				eating;
-	size_t			alarme;
 	size_t 			death_time;
 	struct s_data 	*data;
 	pthread_t 		philo;
@@ -33,24 +32,23 @@ typedef struct s_data
 	pthread_mutex_t *forks_mutex;
 	pthread_mutex_t print;
 	pthread_mutex_t god;
-	pthread_mutex_t imad;
 } t_data;
 
 
-void guide();
-size_t get_time(void);
-int fill_data(t_data *data, char **av);
-void init_philos(t_data *data,int i);
+void	guide();
+void	ft_usleep(size_t n);
+void	print_action(t_philo *philo, char *action,size_t t);
+void	init_philos(t_data *data,int i);
+void	*routine(void *data);
+
+int	init_data(t_data *data, char **av);
 int init_mutexs(t_data *data);
-void *routine(void *data);
 int init_philosophers(t_data *data);
-void *routine(void *data);
-int destroy_mutexs(t_data *data);
-int think(t_philo *philo);
+int wait_next_round(t_philo *philo);
 int eat(t_philo *philo);
 int check_args(char **av);
-void	ft_usleep(size_t n);
-void print_action(t_philo *philo, char *action,size_t t);
+
+size_t	get_time(void);
 
 
 

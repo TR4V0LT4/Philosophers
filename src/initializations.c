@@ -1,5 +1,5 @@
 #include "../include/philo.h"
-int fill_data(t_data *data, char **av)
+int init_data(t_data *data, char **av)
 {
 		int n;
 		n = atoi(av[1]);	
@@ -30,7 +30,6 @@ int init_mutexs(t_data *data)
 		}
 		pthread_mutex_init(&(data->print), NULL);
 		pthread_mutex_init(&(data->god), NULL);
-		pthread_mutex_init(&(data->imad),NULL);
 		return 0;
 }
 

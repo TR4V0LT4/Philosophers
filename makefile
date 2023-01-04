@@ -4,7 +4,7 @@ SRC = src/main.c src/utils.c src/initializations.c src/routine.c
 
 OBJ = ${SRC:%.c=%.o}
 
-FLAGS =  -Wall -Wextra -Werror 
+FLAGS =  -Wall -Wextra -Werror #-fsanitize=thread
 
 %.o:%.c
 		cc $(FLAGS)  -c $< -o $@
