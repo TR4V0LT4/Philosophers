@@ -1,6 +1,6 @@
 NAME = philo_bonus
 
-SRC = src/main.c src/utils src/initializations
+SRC = src/main.c src/utils.c src/initializations.c
 
 OBJ = ${SRC:%.c=%.o}
 
