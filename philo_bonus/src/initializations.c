@@ -13,6 +13,7 @@ int init_data(t_data *data, char **av)
 		data->life = 1;
 		if(check_args(av))
 			return(1);
+		data->philos = malloc(sizeof(t_philo) * n);
 		data->pids = malloc(sizeof(int) * n);
 		return 0;
 }

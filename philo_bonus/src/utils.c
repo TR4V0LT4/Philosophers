@@ -9,7 +9,12 @@ void guide()
 	printf(" ==>fourth : [time_to_sleep]\n");
 	printf(" ==>Fifth  : [the_number_of_meals]\n");
 }
-
+void print_action(t_data *data, char *action,size_t t)
+{
+	sem_wait(&(data->print));
+			printf("\033[36;1mPhilo[%d] : %5zu ==>\033[0m%s\n",data->philos->id,t - data->start_time, action);
+	sem_post(&(data->print));
+}
 size_t get_time(void)
 {
 	static struct timeval t;
